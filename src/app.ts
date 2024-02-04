@@ -4,6 +4,7 @@ import { Container } from "typedi";
 import { UserController } from "./controllers/UserController";
 import express from "express";
 import morgan from "morgan";
+import { rateLimitMiddleware } from "./middlewares/RateLimitMiddleware";
 
 useContainer(Container);
 
@@ -17,6 +18,7 @@ const app = createExpressServer({
   },
 });
 
+app.use(rateLimitMiddleware);
 app.use(morgan("combined")); // Logging middleware
 
 app.listen(3000, () => {
