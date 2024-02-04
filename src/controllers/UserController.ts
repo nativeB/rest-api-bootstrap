@@ -3,6 +3,8 @@ import {
   Get,
   Param,
   BadRequestError,
+  Post,
+  Body,
 } from "routing-controllers";
 import { validate } from "class-validator";
 import { UserModel } from "../models/User";
@@ -22,5 +24,20 @@ export class UserController {
     }
 
     return user;
+  }
+
+  @Post("/")
+  async createUser(@Body() userPayload: { name: string; email: string }) {
+    // Validate userPayload using class-validator
+    const errors = await validate(userPayload);
+
+    if (errors.length > 0) {
+      throw new BadRequestError("Validation failed");
+    }
+
+    // Create a new user
+    const newUser = await UserModel.create(userPayload);
+
+    return newUser;
   }
 }
