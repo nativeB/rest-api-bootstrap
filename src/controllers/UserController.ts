@@ -20,7 +20,7 @@ export class UserController {
 
     const user = await UserModel.findOne({ _id: userId });
     if (!user) {
-      // Handle user not found
+      throw new BadRequestError("User not found");
     }
 
     return user;
