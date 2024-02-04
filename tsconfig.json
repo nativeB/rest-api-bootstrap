@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "ES2020", // Specify the ECMAScript target version
+        "module": "commonjs", // Specify module code generation
+        "strict": true, // Enable strict type-checking
+        "esModuleInterop": true, // Enable compatibility with CommonJS modules
+        "skipLibCheck": true, // Skip type checking of declaration files
+        "forceConsistentCasingInFileNames": true, // Ensure consistent casing in file names
+        "outDir": "./dist", // Specify output directory for compiled files
+        "rootDir": "./src", // Specify the root directory of source files
+        "resolveJsonModule": true, // Allow importing JSON files as modules
+        "strictPropertyInitialization": false, // Allow property initialization in constructors to be non-strict
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}
