@@ -6,7 +6,7 @@ import swaggerUi from "swagger-ui-express";
 import * as swaggerDocument from "../swagger.json";
 import express from "express";
 import morgan from "morgan";
-import { rateLimitMiddleware } from "./middlewares/RateLimitMiddleware";
+import { RateLimiterMiddleware } from "./middlewares/RateLimitMiddleware";
 import { connectToDatabase } from "./config/mongo.config";
 
 useContainer(Container);
@@ -19,10 +19,12 @@ const app = createExpressServer({
       required: true,
     },
   },
-  middlewares: [rateLimitMiddleware, morgan("combined")],
   defaultErrorHandler: true,
   classTransformer: true,
+  middlewares: [RateLimiterMiddleware],
 });
+
+app.use(morgan("combined"));
 
 // documentation setup
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
