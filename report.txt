@@ -1,0 +1,29 @@
+Structure
+The project follows a modular structure to enhance maintainability and readability.
+Key components:
+
+Controllers: The controllers are responsible for handling incoming requests, processing the data, and returning the appropriate response to the client.
+
+Models: The models define the data structure and interact with the database. They encapsulate the business logic and provide an interface for managing the data.
+
+Middleware: middleware functions are used to perform tasks such as request processing, authentication, and error handling.
+
+Swagger Documentation: the project includes Swagger documentation to provide a clear understanding of the API endpoints and their expected inputs and outputs.
+Logging: the project uses morgan for logging HTTP requests 
+
+Error Handling: the project leverages the inbuilt error handling capabilities and apis offered by routing-controllers to provide a consistent error response to the client.
+
+Testing: Jest is used for testing 
+
+
+Custom Rate Limiting
+The custom rate limiting middleware is designed to address the need for controlling the request rate to the API.
+ Key decisions include:
+    Configurability: The middleware is configurable, allowing adjustments to rate limit thresholds based on  requirements.
+    currently its set to accept manimum 100 requests per minute, that is appopraite for a get and route 
+
+Swagger Documentation: Integration with Swagger ensures that the api documentation reflects the actual response types, aiding developers in understanding the expected structure.
+
+
+issues:
+there seems to be a bug with how mongodb objects gets parsed and returned to the client with  routing-controller to mitigate this  responses were converted to JSON before being being returned in the controllers 
