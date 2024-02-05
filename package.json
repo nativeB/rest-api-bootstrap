@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node src/app.ts",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test": "jest",
     "test:watch": "jest --watch",
     "lint": "tsc --noEmit --skipLibCheck",
     "prettify": "prettier --write src/**/*.ts"
@@ -34,8 +34,5 @@
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
-  },
-  "resolutions": {
-    "string-width": "4.2.3"
- }
+  }
 }
